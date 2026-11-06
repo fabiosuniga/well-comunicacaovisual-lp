@@ -1,0 +1,1704 @@
+/* ==========================================================================
+   STYLE.CSS — Well Comunicação Visual 3D (Bragança Paulista - SP)
+   Baseado em STYLE.md & BACKLOG-ALTERACOES.md
+   ========================================================================== */
+
+:root {
+  /* Paleta Primária (STYLE.md) */
+  --brand-green: #00C853;
+  --brand-green-hover: #059669;
+  --brand-green-light: #E8F5E9;
+  --brand-dark: #0F172A;
+  --brand-dark-elevated: #1E293B;
+
+  /* Paleta Secundária e Neutra (STYLE.md) */
+  --brand-light: #F8FAFC;
+  --brand-gray: #CBD5E1;
+  --brand-muted: #64748B;
+  --brand-text: #334155;
+  --white: #FFFFFF;
+
+  /* Tipografia (STYLE.md) */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Sombras & Bordas */
+  --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.06);
+  --shadow-md: 0 12px 32px -4px rgba(15, 23, 42, 0.1);
+  --shadow-lg: 0 20px 45px -10px rgba(15, 23, 42, 0.22);
+  --shadow-emerald: 0 10px 28px -4px rgba(0, 200, 83, 0.35);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Reset & Base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--brand-light);
+  color: var(--brand-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--brand-dark);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section-padding {
+  padding: 88px 0;
+}
+
+/* Utilitários de Texto e Cabeçalhos */
+.text-gradient-green {
+  background: linear-gradient(135deg, #00E676 0%, var(--brand-green) 55%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-emerald {
+  color: var(--brand-green);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 740px;
+  margin: 0 auto 54px;
+}
+
+.section-eyebrow {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--brand-green-hover);
+  background: var(--brand-green-light);
+  border: 1px solid rgba(0, 200, 83, 0.25);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: clamp(1.8rem, 3.1vw, 2.5rem);
+  margin-bottom: 14px;
+  letter-spacing: -0.02em;
+}
+
+.section-description {
+  font-size: 1.04rem;
+  color: var(--brand-text);
+}
+
+/* ==========================================================================
+   Botões (Alto Contraste STYLE.md)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.94rem;
+  padding: 13px 22px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.btn-primary {
+  background-color: var(--brand-green);
+  color: var(--brand-dark);
+  box-shadow: var(--shadow-emerald);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-green-hover);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-outline-light {
+  background-color: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+  border-color: rgba(203, 213, 225, 0.35);
+  backdrop-filter: blur(8px);
+}
+
+.btn-outline-light:hover {
+  background-color: rgba(255, 255, 255, 0.14);
+  border-color: var(--brand-green);
+  color: var(--brand-green);
+}
+
+.btn-lg {
+  padding: 15px 26px;
+  font-size: 0.98rem;
+}
+
+.btn-full {
+  width: 100%;
+  white-space: normal;
+}
+
+/* ==========================================================================
+   ÉPICO 1: Header em Linha Única (Single-Line Layout)
+   ========================================================================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--brand-gray);
+  transition: var(--transition);
+}
+
+.site-header.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  height: 78px;
+  gap: 16px;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brand-logo-svg {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.nav-list {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 18px;
+}
+
+.nav-link {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--brand-text);
+  padding: 6px 2px;
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--brand-green);
+  transition: var(--transition);
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--brand-dark);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+.nav-link-3d {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--brand-dark);
+  color: var(--white) !important;
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.nav-link-3d::after {
+  display: none;
+}
+
+.nav-link-3d:hover {
+  background: var(--brand-green-hover);
+}
+
+.dot-3d {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  box-shadow: 0 0 8px var(--brand-green);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.btn-header-cta {
+  padding: 10px 16px;
+  font-size: 0.84rem;
+  white-space: nowrap;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--brand-gray);
+  border-radius: var(--radius-sm);
+  padding: 8px;
+  color: var(--brand-dark);
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   ÉPICO 2: Hero Section (Apresentação Direta)
+   ========================================================================== */
+.hero-section {
+  position: relative;
+  background: radial-gradient(circle at 80% 20%, rgba(0, 200, 83, 0.16), transparent 45%),
+              linear-gradient(135deg, #0F172A 0%, #162238 100%);
+  color: var(--white);
+  padding: 72px 0 84px;
+  overflow: hidden;
+}
+
+.hero-bg-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(203, 213, 225, 0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(203, 213, 225, 0.05) 1px, transparent 1px);
+  background-size: 42px 42px;
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.hero-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 200, 83, 0.12);
+  border: 1px solid rgba(0, 200, 83, 0.4);
+  color: #69F0AE;
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 7px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+}
+
+.hero-title {
+  color: var(--white);
+  font-size: clamp(2rem, 3.6vw, 3.15rem);
+  letter-spacing: -0.025em;
+  margin-bottom: 18px;
+}
+
+.hero-subtitle {
+  font-size: 1.08rem;
+  color: var(--brand-gray);
+  max-width: 590px;
+  margin-bottom: 30px;
+}
+
+.hero-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 34px;
+}
+
+.hero-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(203, 213, 225, 0.15);
+}
+
+.trust-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--brand-gray);
+}
+
+.trust-item svg {
+  width: 18px;
+  height: 18px;
+  color: var(--brand-green);
+}
+
+/* Showcase Carrossel na Hero */
+.hero-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.showcase-main-card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(203, 213, 225, 0.25);
+  box-shadow: var(--shadow-lg);
+  background-color: var(--brand-dark-elevated);
+  aspect-ratio: 16 / 11;
+}
+
+.showcase-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease, opacity 0.3s ease;
+}
+
+.showcase-badge-top {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.showcase-tag {
+  background-color: var(--brand-green);
+  color: var(--brand-dark);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.showcase-spec {
+  background-color: rgba(15, 23, 42, 0.82);
+  backdrop-filter: blur(8px);
+  color: var(--white);
+  border: 1px solid rgba(203, 213, 225, 0.25);
+  font-size: 0.75rem;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.showcase-overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.96) 15%, rgba(15, 23, 42, 0.65) 70%, transparent 100%);
+  padding: 36px 22px 20px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.showcase-caption h2 {
+  color: var(--white);
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.showcase-caption p {
+  color: var(--brand-gray);
+  font-size: 0.85rem;
+}
+
+.showcase-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.showcase-nav-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(203, 213, 225, 0.3);
+  background: rgba(15, 23, 42, 0.7);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.showcase-nav-btn:hover {
+  background: var(--brand-green);
+  color: var(--brand-dark);
+  border-color: var(--brand-green);
+}
+
+.showcase-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.showcase-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.showcase-dot.active {
+  width: 22px;
+  background: var(--brand-green);
+}
+
+.showcase-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.mini-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(203, 213, 225, 0.18);
+  color: var(--white);
+  text-align: left;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.mini-card svg {
+  width: 20px;
+  height: 20px;
+  color: var(--brand-green);
+  flex-shrink: 0;
+}
+
+.mini-card strong {
+  display: block;
+  font-size: 0.78rem;
+  font-family: var(--font-heading);
+}
+
+.mini-card span {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--brand-gray);
+}
+
+.mini-card.active,
+.mini-card:hover {
+  background: rgba(0, 200, 83, 0.14);
+  border-color: var(--brand-green);
+}
+
+/* ==========================================================================
+   ÉPICO 4: Vitrine de Serviços Reais
+   ========================================================================== */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.solution-card {
+  background-color: var(--white);
+  border: 1px solid var(--brand-gray);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+.solution-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--brand-green);
+}
+
+.solution-img-wrap {
+  position: relative;
+  height: 215px;
+  overflow: hidden;
+}
+
+.solution-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.solution-card:hover .solution-img-wrap img {
+  transform: scale(1.06);
+}
+
+.solution-category-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(15, 23, 42, 0.88);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 5px 11px;
+  border-radius: 999px;
+  border: 1px solid rgba(203, 213, 225, 0.3);
+}
+
+.solution-body {
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.solution-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--brand-green-light);
+  color: var(--brand-green-hover);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.solution-body h3 {
+  font-size: 1.25rem;
+  margin-bottom: 10px;
+}
+
+.solution-body > p {
+  font-size: 0.94rem;
+  margin-bottom: 18px;
+  color: var(--brand-text);
+}
+
+.solution-specs {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+  margin-bottom: 22px;
+  flex: 1;
+}
+
+.solution-specs li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.solution-specs svg {
+  width: 17px;
+  height: 17px;
+  color: var(--brand-green-hover);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.solution-footer {
+  padding-top: 16px;
+  border-top: 1px solid var(--brand-gray);
+}
+
+.btn-link-solution {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--brand-dark);
+}
+
+.btn-link-solution:hover {
+  color: var(--brand-green-hover);
+}
+
+/* ==========================================================================
+   ÉPICO 4.4: Seção de Impressão 3D
+   ========================================================================== */
+.tech-3d-section {
+  background: linear-gradient(135deg, #0F172A 0%, #111D35 100%);
+  color: var(--white);
+  position: relative;
+  border-top: 2px solid var(--brand-green);
+  border-bottom: 2px solid var(--brand-green);
+}
+
+.tech-3d-wrapper {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 44px;
+  align-items: center;
+}
+
+.badge-3d-special {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(0, 200, 83, 0.16);
+  border: 1px solid var(--brand-green);
+  color: var(--brand-green);
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 7px 15px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.tech-3d-title {
+  color: var(--white);
+  font-size: clamp(1.85rem, 3vw, 2.5rem);
+  margin-bottom: 16px;
+}
+
+.tech-3d-desc {
+  color: var(--brand-gray);
+  font-size: 1.02rem;
+  margin-bottom: 24px;
+}
+
+.tech-3d-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.tech-3d-mini {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(203, 213, 225, 0.18);
+  border-radius: var(--radius-md);
+  padding: 22px;
+}
+
+.tech-3d-mini-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.tech-3d-mini-header svg {
+  color: var(--brand-green);
+}
+
+.tech-3d-mini-header h4 {
+  color: var(--white);
+  font-size: 1.06rem;
+}
+
+.tech-3d-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tech-3d-list li {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 0.92rem;
+  color: var(--brand-gray);
+}
+
+.tech-3d-list svg {
+  width: 17px;
+  height: 17px;
+  color: var(--brand-green);
+  flex-shrink: 0;
+}
+
+/* Card de Orçamento 3D */
+.tech-3d-uploader-card {
+  background: rgba(30, 41, 59, 0.88);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(203, 213, 225, 0.25);
+  border-radius: var(--radius-lg);
+  padding: 30px;
+  box-shadow: var(--shadow-lg);
+}
+
+.uploader-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.uploader-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--brand-green);
+  box-shadow: 0 0 10px var(--brand-green);
+  flex-shrink: 0;
+}
+
+.uploader-header h3 {
+  color: var(--white);
+  font-size: 1.18rem;
+}
+
+.uploader-sub {
+  font-size: 0.88rem;
+  color: var(--brand-gray);
+  margin-bottom: 18px;
+}
+
+.uploader-sub code {
+  color: #69F0AE;
+}
+
+.dropzone-3d {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 22px 18px;
+  border: 2px dashed rgba(0, 200, 83, 0.5);
+  border-radius: var(--radius-md);
+  background: rgba(15, 23, 42, 0.55);
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 16px;
+}
+
+.dropzone-3d:hover,
+.dropzone-3d.dragover {
+  border-color: var(--brand-green);
+  background: rgba(0, 200, 83, 0.1);
+}
+
+.dropzone-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(0, 200, 83, 0.16);
+  color: var(--brand-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.dropzone-3d strong {
+  color: var(--white);
+  font-size: 0.92rem;
+  margin-bottom: 4px;
+}
+
+.dropzone-formats {
+  font-size: 0.78rem;
+  color: var(--brand-gray);
+}
+
+.dropzone-formats code {
+  color: #69F0AE;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.file-preview-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 200, 83, 0.15);
+  border: 1px solid var(--brand-green);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 16px;
+}
+
+.file-preview-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.file-preview-info svg {
+  color: var(--brand-green);
+}
+
+.file-preview-info strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--white);
+}
+
+.file-preview-info span {
+  font-size: 0.78rem;
+  color: #69F0AE;
+}
+
+.btn-remove-file {
+  background: transparent;
+  border: none;
+  color: var(--brand-gray);
+  cursor: pointer;
+}
+
+.uploader-options {
+  margin-bottom: 18px;
+}
+
+.option-group label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--brand-gray);
+  margin-bottom: 6px;
+}
+
+.option-group input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(203, 213, 225, 0.3);
+  background: var(--brand-dark);
+  color: var(--white);
+}
+
+.option-group input:focus {
+  outline: none;
+  border-color: var(--brand-green);
+}
+
+/* ==========================================================================
+   ÉPICO 6: Galeria de Trabalhos & Portfólio
+   ========================================================================== */
+.portfolio-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.filter-btn {
+  font-family: var(--font-heading);
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1px solid var(--brand-gray);
+  background: var(--white);
+  color: var(--brand-text);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover {
+  border-color: var(--brand-dark);
+  color: var(--brand-dark);
+}
+
+.filter-btn.active {
+  background: var(--brand-dark);
+  color: var(--white);
+  border-color: var(--brand-dark);
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.portfolio-item {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--brand-gray);
+  background: var(--brand-dark);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.portfolio-item.hidden {
+  display: none;
+}
+
+.portfolio-thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.portfolio-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.portfolio-item:hover .portfolio-thumb img {
+  transform: scale(1.07);
+}
+
+.portfolio-hover {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 23, 42, 0.94) 15%, rgba(15, 23, 42, 0.3) 75%, transparent 100%);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--white);
+}
+
+.portfolio-cat-tag {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.portfolio-cat-tag.tag-3d {
+  background: var(--brand-green);
+  color: var(--brand-dark);
+}
+
+.portfolio-hover h3 {
+  color: var(--white);
+  font-size: 1.12rem;
+  margin-bottom: 4px;
+}
+
+.portfolio-hover p {
+  font-size: 0.84rem;
+  color: var(--brand-gray);
+  margin-bottom: 10px;
+}
+
+.btn-view-case {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--brand-green);
+}
+
+.btn-view-case svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* ==========================================================================
+   ÉPICO 7: Localização & Contato (Bragança Paulista)
+   ========================================================================== */
+.location-section {
+  background-color: var(--white);
+  border-top: 1px solid var(--brand-gray);
+}
+
+.contact-layout-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 36px;
+  align-items: start;
+}
+
+.location-column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.location-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.loc-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--brand-light);
+  border: 1px solid var(--brand-gray);
+  border-radius: var(--radius-md);
+  padding: 20px;
+}
+
+.loc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--brand-green-light);
+  color: var(--brand-green-hover);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.loc-card h3 {
+  font-size: 1.04rem;
+  margin-bottom: 4px;
+}
+
+.loc-card p {
+  font-size: 0.9rem;
+  color: var(--brand-text);
+}
+
+.phone-highlight {
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1.08rem;
+  color: var(--brand-green-hover);
+}
+
+.phone-highlight:hover,
+.contact-inline-link:hover {
+  text-decoration: underline;
+  color: var(--brand-green-hover);
+}
+
+.contact-inline-link {
+  font-weight: 600;
+  color: var(--brand-dark);
+}
+
+.map-external-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: var(--brand-green-hover);
+}
+
+.map-external-link svg {
+  width: 15px;
+  height: 15px;
+}
+
+.map-external-link:hover {
+  text-decoration: underline;
+}
+
+.location-map-wrap {
+  height: 280px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--brand-gray);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Formulário Rápido de Orçamento Local */
+.quick-quote-card {
+  background: var(--brand-light);
+  border: 1px solid var(--brand-gray);
+  border-radius: var(--radius-lg);
+  padding: 34px 30px;
+  box-shadow: var(--shadow-md);
+}
+
+.badge-quote {
+  display: inline-block;
+  background: var(--brand-green-light);
+  color: var(--brand-green-hover);
+  font-family: var(--font-heading);
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.quick-quote-card h3 {
+  font-size: 1.45rem;
+  margin-bottom: 8px;
+}
+
+.quick-quote-card > p {
+  font-size: 0.92rem;
+  color: var(--brand-text);
+  margin-bottom: 22px;
+}
+
+.form-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--brand-dark);
+}
+
+.optional {
+  color: var(--brand-muted);
+  font-weight: 400;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 14px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--brand-gray);
+  background: var(--white);
+  color: var(--brand-dark);
+  transition: var(--transition);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--brand-green);
+  box-shadow: 0 0 0 3px rgba(0, 200, 83, 0.15);
+}
+
+.form-error-msg {
+  color: #DC2626;
+  background: #FEF2F2;
+  border: 1px solid #FECACA;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.form-success-msg {
+  color: #065F46;
+  background: #ECFDF5;
+  border: 1px solid #A7F3D0;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   ÉPICO 7.2: Rodapé Clean
+   ========================================================================== */
+.site-footer {
+  background-color: var(--brand-dark);
+  color: var(--brand-gray);
+  padding-top: 64px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr 1.1fr;
+  gap: 36px;
+  padding-bottom: 48px;
+}
+
+.footer-logo {
+  margin-bottom: 16px;
+}
+
+.footer-logo-svg {
+  height: 46px;
+}
+
+.footer-about {
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.footer-socials a {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(203, 213, 225, 0.2);
+  color: var(--white);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-socials a svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer-socials a:hover {
+  background: var(--brand-green);
+  border-color: var(--brand-green);
+  color: var(--brand-dark);
+  transform: translateY(-2px);
+}
+
+.footer-links-col h4 {
+  color: var(--white);
+  font-size: 1rem;
+  margin-bottom: 16px;
+}
+
+.footer-links-col ul {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.footer-links-col a {
+  font-size: 0.9rem;
+  color: var(--brand-gray);
+}
+
+.footer-links-col a:hover {
+  color: var(--brand-green);
+}
+
+.footer-contact-text {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  margin-bottom: 16px;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(203, 213, 225, 0.14);
+  padding: 20px 0;
+  font-size: 0.82rem;
+}
+
+.footer-bottom-inner {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ==========================================================================
+   ÉPICO 6.2: Modal / Zoom de Fotos (<dialog> Nativo)
+   ========================================================================== */
+.project-modal {
+  margin: auto;
+  border: 1px solid var(--brand-gray);
+  border-radius: var(--radius-lg);
+  padding: 0;
+  max-width: 860px;
+  width: calc(100% - 32px);
+  background: var(--white);
+  color: var(--brand-text);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-modal::backdrop {
+  background: rgba(15, 23, 42, 0.78);
+  backdrop-filter: blur(6px);
+}
+
+.modal-content {
+  position: relative;
+  padding: 30px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--brand-gray);
+  background: var(--white);
+  color: var(--brand-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-close-btn:hover {
+  background: var(--brand-dark);
+  color: var(--white);
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 26px;
+  align-items: center;
+}
+
+.modal-img-col img {
+  width: 100%;
+  height: 330px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+.modal-cat-badge {
+  display: inline-block;
+  background: var(--brand-green-light);
+  color: var(--brand-green-hover);
+  font-family: var(--font-heading);
+  font-size: 0.74rem;
+  font-weight: 800;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.modal-info-col h3 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.modal-info-col > p {
+  font-size: 0.92rem;
+  margin-bottom: 16px;
+}
+
+.modal-specs-table {
+  border-top: 1px solid var(--brand-gray);
+  border-bottom: 1px solid var(--brand-gray);
+  padding: 12px 0;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  gap: 12px;
+}
+
+.spec-key {
+  color: var(--brand-muted);
+}
+
+.spec-val {
+  color: var(--brand-dark);
+  text-align: right;
+}
+
+/* ==========================================================================
+   Efeito Scroll Reveal (Aparecer Suavemente ao Descer a Página)
+   ========================================================================== */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(34px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.reveal-left {
+  transform: translateX(-34px);
+}
+
+.reveal-on-scroll.reveal-right {
+  transform: translateX(34px);
+}
+
+.reveal-on-scroll.reveal-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ==========================================================================
+   ÉPICO 3: Botão Flutuante de WhatsApp com Efeito Pulsante Suave
+   ========================================================================== */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.65);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(0, 200, 83, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 200, 83, 0);
+  }
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.whatsapp-tooltip {
+  background: var(--brand-dark);
+  color: var(--white);
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  border-radius: 999px;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 200, 83, 0.4);
+}
+
+.whatsapp-icon-wrap {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--brand-green);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: whatsappPulse 2.2s infinite;
+  transition: var(--transition);
+}
+
+.whatsapp-outline-float-svg {
+  width: 30px;
+  height: 30px;
+}
+
+.whatsapp-float:hover .whatsapp-icon-wrap {
+  transform: scale(1.08);
+  background: var(--brand-green-hover);
+}
+
+/* ==========================================================================
+   Responsividade (Desktop Single-Line / Mobile Menu Hambúrguer)
+   ========================================================================== */
+@media (max-width: 1140px) {
+  .nav-list {
+    gap: 12px;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+  }
+
+  .brand-logo-svg {
+    height: 38px;
+  }
+
+  .btn-header-cta {
+    padding: 9px 13px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero-grid,
+  .tech-3d-wrapper,
+  .contact-layout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .solutions-grid,
+  .portfolio-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 78px;
+    left: 0;
+    right: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--brand-gray);
+    padding: 20px 24px;
+    box-shadow: var(--shadow-md);
+  }
+
+  .main-nav.open {
+    display: block;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .nav-link {
+    font-size: 0.95rem;
+  }
+
+  .mobile-menu-btn {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 680px) {
+  .section-padding {
+    padding: 64px 0;
+  }
+
+  .btn-header-cta span {
+    display: none;
+  }
+
+  .solutions-grid,
+  .portfolio-grid,
+  .modal-grid,
+  .footer-grid,
+  .showcase-mini-grid,
+  .form-row-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-quote-card {
+    padding: 26px 20px;
+  }
+
+  .whatsapp-tooltip {
+    display: none;
+  }
+}
